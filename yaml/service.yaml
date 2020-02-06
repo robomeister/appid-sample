@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: appidsample-secure
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: appidsample
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appidsample-insecure
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: appidsample
+  sessionAffinity: None
+  type: ClusterIP

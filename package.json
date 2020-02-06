@@ -1,0 +1,32 @@
+{
+  "name": "appidtest",
+  "version": "1.0.0",
+  "description": "An app to test AppID",
+  "private": true,
+  "engines": {
+    "node": "^6.9.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "debug": "chmod +x run-debug && ./run-debug",
+    "test": "nyc mocha",
+    "dev": "nodemon app.js"
+  },
+  "nodemonConfig": {
+    "env": {
+      "NODE_HEAPDUMP_OPTIONS": "nosignal"
+    }
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-session": "^1.15.1",
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "request": "2.88.0"
+  },
+  "devDependencies": {
+    "chai": "^4.0.0",
+    "mocha": "^3.4.2",
+    "nyc": "^10.3.2"
+  }
+}

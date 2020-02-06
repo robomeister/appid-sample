@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: appidsample
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appidsample
+      version: current
+  template:
+    metadata:
+      labels:
+        app: appidsample
+        version: current
+    spec:
+      containers:
+      - name: appidsample
+        image: us.icr.io/robobob/appidsample:1
+        imagePullPolicy: Always
+        env:
+        - name: APPID_SECRETS
+          valueFrom:
+            secretKeyRef:
+              key: binding
+              name: binding-<APPIDSERVICENAME>
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 500m
+            memory: 500Mi

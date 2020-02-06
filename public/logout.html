@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>AppID!</title>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/demo.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+   var ticker = setInterval(tick, 1000);
+   var counter = 3;
+
+   function tick() 
+   {
+      var timerDiv = document.getElementById("timer");
+      if (counter > 0) 
+         timerDiv.innerText = "Terminating W3ID session. Redirecting back in " + (counter--) + " seconds.";
+      else 
+      //if (--counter <= 0) 
+         window.location.pathname = "/";
+            
+   }
+</script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+         <span class="roboTitle">AppID Test!</span>
+         <span class="roboCaption">Logging out.  Please wait...</span>
+      </a>
+   </div>
+   <div id="info-component" class="navbar-right">
+   <a href="#"><img src="img/IBM-logo.jpg" height="40px" width="80px"></a>  
+   </div>
+</div>
+</nav>
+<div class="container-fluid">
+   <div class="col-xs-12">
+   <div class="row">
+      <div class="robotimer" id="timer"> </div>
+    </div>
+    </div>
+</div>
+
+<!-- Using iFrames to send Logout requests to all IBMid servers -->
+<div style="visibility:hidden">
+<iframe height="0" width="0" src="https://w3id.alpha.sso.ibm.com/pkmslogout"></iframe>
+</div>
+</body>
+</html>

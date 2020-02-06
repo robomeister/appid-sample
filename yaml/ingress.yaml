@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: appidsample
+  annotations:
+    ingress.bluemix.net/appid-auth: bindSecret=binding-<APPIDSERVICENAME> namespace=default requestType=web serviceName=appidsample-secure
+    ingress.bluemix.net/redirect-to-https: "True"
+spec:
+  rules:
+  - host: appidsample.<YOUR INGRESS SUBDOMAIN>
+    http:
+      paths:
+      - backend:
+          serviceName: appidsample-secure
+          servicePort: 3000
+        path: /secure
+      - backend:
+          serviceName: appidsample-insecure
+          servicePort: 3000
+        path: /
+  tls:
+  - hosts:
+    - appidsample.<YOUR INGRESS SUBDOMAIN>
+    secretName: <YOUR INGRESS SECRET>
+
