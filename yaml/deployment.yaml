@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: appidsample
-        image: us.icr.io/robobob/appidsample:1
+        image: us.icr.io/<naemspace>/appidsample:1
         imagePullPolicy: Always
         env:
         - name: APPID_SECRETS
